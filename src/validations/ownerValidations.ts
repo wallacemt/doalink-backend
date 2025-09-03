@@ -33,5 +33,4 @@ export const ownerSchema = z.object({
     message: 'A data de nascimento deve ser anterior à data atual',
   }),
 });
-
-export const ownerSchemaOptional = ownerSchema.partial();
+export const ownerSchemaOptional = ownerSchema.partial()
