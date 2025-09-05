@@ -17,10 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - name: Use Node.js
-      - uses: oven-sh/setup-bun@v2
-      - run: bun install
-      - run: bun run lint:fix
+      - name: Use Bun.js
+        uses: oven-sh/setup-bun@v2
+        run: bun install
+        run: bun run lint:fix
 
   #verifica vulnerabilidades nas dependencias do projeto
   grype:
