@@ -1,8 +1,9 @@
-import { type Request, type Response, Router } from 'express';
-import { AuthService } from '../services/authService';
+// import { type Request, type Response, Router } from 'express';
+// import { AuthService } from '../services/authService';
 
-import type { OwnerDataRequest, OwnerDataResponse } from '../types/owner';
-import errorFilter from '../utils/isCustomError';
+import { Router } from "express";
+
+// import errorFilter from '../utils/isCustomError';
 /**
  * @swagger
  * tags:
@@ -12,45 +13,45 @@ import errorFilter from '../utils/isCustomError';
 
 export class AuthController {
   router: Router;
-  private authService: AuthService = new AuthService();
+  // private authService: AuthService = new AuthService();
   constructor() {
     this.router = Router();
     this.routes();
   }
 
   private routes() {
-    this.router.post('/register', this.registerOwner.bind(this));
-    this.router.post('/login', this.login.bind(this));
-    this.router.get('/', (_req, res) => {
-      res.json({ message: 'Bem vindo(a)!' });
-    });
+    // this.router.post('/register', this.registerUser.bind(this));
+    // this.router.post('/login', this.login.bind(this));
+    // this.router.get('/', (_req, res) => {
+    //   res.json({ message: 'Bem vindo(a)!' });
+    // });
   }
 
-  private async registerOwner(req: Request, res: Response) {
-    try {
-      const owner: OwnerDataRequest = req.body;
-      owner.birthDate = new Date(owner.birthDate);
+  // private async registerUser(req: Request, res: Response) {
+    // try {
+    //   const owner: OwnerDataRequest = req.body;
+    //   owner.birthDate = new Date(owner.birthDate);
 
-      const data: OwnerDataResponse =
-        await this.authService.registerOwner(owner);
-      res.status(201).json({ message: 'Owner cadastrado com sucesso!', data });
-    } catch (error: unknown) {
-      errorFilter(error, res);
-    }
-  }
+    //   const data: OwnerDataResponse =
+    //     await this.authService.registerOwner(owner);
+    //   res.status(201).json({ message: 'Owner cadastrado com sucesso!', data });
+    // } catch (error: unknown) {
+    //   errorFilter(error, res);
+    // }
+  // }
 
-  private async login(req: Request, res: Response) {
-    try {
-      const { email, password } = req.body;
-      const owner = await this.authService.login(email, password);
-      res
-        .status(200)
-        .json({
-          message: `Bem vindo(a) ${owner.name.split(' ')[0]}!`,
-          token: owner.token,
-        });
-    } catch (error: unknown) {
-      errorFilter(error, res);
-    }
-  }
+  // private async login(req: Request, res: Response) {
+  //   try {
+  //     const { email, password } = req.body;
+  //     const owner = await this.authService.login(email, password);
+  //     res
+  //       .status(200)
+  //       .json({
+  //         message: `Bem vindo(a) ${owner.name.split(' ')[0]}!`,
+  //         token: owner.token,
+  //       });
+  //   } catch (error: unknown) {
+  //     errorFilter(error, res);
+  //   }
+  // }
 }

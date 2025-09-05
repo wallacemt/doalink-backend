@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const ownerSchema = z.object({
+export const userSchema = z.object({
   name: z
     .string()
     .min(3, { message: 'O nome deve ter pelo menos 3 caracteres' })
@@ -33,4 +33,4 @@ export const ownerSchema = z.object({
     message: 'A data de nascimento deve ser anterior à data atual',
   }),
 });
-export const ownerSchemaOptional = ownerSchema.partial()
+export const userSchemaOptional = userSchema.partial()

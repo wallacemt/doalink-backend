@@ -5,9 +5,7 @@ import { env } from "../env";
 
 export const requestLogger = (req: Request, res: Response, next: NextFunction) => {
   const start = performance.now();
-
   if (req.originalUrl.startsWith("/docs")) return next();
-
   if (env.NODE_ENV === "development") {
     console.log("========== [Nova Requisição] ==========");
     console.log("🔹 Método:", req.method);
